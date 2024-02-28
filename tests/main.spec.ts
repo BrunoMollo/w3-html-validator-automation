@@ -1,5 +1,13 @@
 import { test, expect } from "@playwright/test";
 
+/*
+ *This is the base url of the site that you want to test
+ * */
+const base_url = "http://localhost:8000/";
+
+/*
+ *This array contains all the routes that you are going to test
+ * */
 const routes = [
   "/",
   "admin/administrar_llamados",
@@ -31,7 +39,9 @@ const routes = [
   "1/postulaciones",
 ] as const;
 
-const base_url = "http://localhost:8000/";
+/*
+ * Execution of test
+ * */
 for (let route of routes) {
   test("html " + route, async ({ page }) => {
     await page.goto("https://validator.w3.org/nu/#textarea");
