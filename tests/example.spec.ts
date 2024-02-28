@@ -29,7 +29,7 @@ const routes = [
   "vacantes_cerradas",
   "vacantes_mi_catedra",
   "1/postulaciones",
-];
+] as const;
 
 const base_url = "http://localhost:8000/";
 for (let route of routes) {
@@ -52,6 +52,7 @@ for (let route of routes) {
     const path = `out/${file_name}.png`;
     await page.screenshot({ path });
 
-    expect(1 + 1).toBe(2);
+    const errors = await page.$$(".error");
+    expect(errors.length).toBe(0);
   });
 }
